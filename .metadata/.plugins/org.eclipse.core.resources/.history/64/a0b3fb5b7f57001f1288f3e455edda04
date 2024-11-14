@@ -1,0 +1,18 @@
+package Programs;
+
+import java.util.Scanner;
+
+public class StringAnagram {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the string 1 : ");
+		s1 = sc.next();
+		System.out.println("Enter the string 2 : ");
+		sc.next();
+		if
+	}
+
+}

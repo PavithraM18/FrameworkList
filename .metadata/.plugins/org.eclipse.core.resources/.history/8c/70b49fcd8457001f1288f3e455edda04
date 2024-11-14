@@ -1,0 +1,22 @@
+package leetCode;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class StringAnagramsGroup {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] input = {"act", "god", "not", "is", "cat", "dog", "tac", "ton"};
+		System.out.println(Arrays.sort(input));
+		ArrayList<String> a = new ArrayList<>();
+		for(int i = 0 ; i<input.length;i++)
+		{
+			a.add(input[i]);
+		}
+		System.out.println(a);
+		
+	}
+
+	
+}

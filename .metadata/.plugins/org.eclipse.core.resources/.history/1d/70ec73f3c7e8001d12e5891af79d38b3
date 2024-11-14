@@ -1,0 +1,25 @@
+package CoreJavaBrushup1;
+
+public class MethodsDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MethodsDemo a = new MethodsDemo();
+		a.getdata();
+		StringObj b = new StringObj();
+		b.getdata2();
+		getdata1();
+		
+	}
+
+	public void getdata()
+	{
+		System.out.println("Methods Demo on same class");
+	}
+	public static String getdata1()
+	{
+		System.out.println("Methods Demo on same class with static data");
+		return "Sample";
+			
+	}
+}

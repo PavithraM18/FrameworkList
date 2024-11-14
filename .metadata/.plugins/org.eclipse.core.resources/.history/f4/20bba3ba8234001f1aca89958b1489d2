@@ -1,0 +1,26 @@
+package SelfLearning.data;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+
+import org.apache.commons.io.FileUtils;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class DataReader {
+
+	public void getJsonDataToMap() throws IOException
+	{
+			//read Json to string
+			String jsonContent = FileUtils.readFileToString(new File(System.getProperty("User.dir")+"//src//test//java//SelfLearning//data//PurchaseOrder.json"));
+		
+			// string in to hashmap Jackson databind
+			ObjectMapper mapper = new ObjectMapper();
+			HashMap<String, String> data = mapper.readValue(jsonContent, new TypeReference<HashMap<String,String>>() {
+			})
+			
+		}
+	}
+

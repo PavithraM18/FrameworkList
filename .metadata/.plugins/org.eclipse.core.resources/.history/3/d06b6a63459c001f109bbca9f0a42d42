@@ -1,0 +1,21 @@
+package practiceCode;
+
+public class FindSmallestElement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {25, 11, 77, 75, 56,3,27};
+		usingLoopMethod(arr);
+		usingSortMethod(arr);		
+	}
+
+	private static void usingLoopMethod(int[] arr) {
+	
+		
+	}
+
+	private static void usingSortMethod(int[] arr) {
+		
+	}
+
+}

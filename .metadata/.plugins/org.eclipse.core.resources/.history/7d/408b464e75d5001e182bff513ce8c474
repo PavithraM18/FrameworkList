@@ -1,0 +1,81 @@
+package SelfLearning.SeleniumFrameworkDesign;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SubmitOrderTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String productName = "ZARA COAT 3";
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		LandingPage lp = new LandingPage(driver);
+		lp.goTo();
+		lp.loginApplication("mpavithra18@gmail.com", "Test@1234");
+		
+		ProductCatalogue productcatal = new ProductCatalogue(driver);
+		List<WebElement> productLists = productcatal.getProductList();
+		productcatal.addProductToCart(productName);
+		
+		/*
+		driver.findElement(By.xpath("//button[@routerlink='/dashboard/cart']")).click();
+		
+		List<WebElement> cartProducts = driver.findElements(By.cssSelector(".cartSection h3"));
+		boolean cartProd = cartProducts.stream().anyMatch(cartProduct -> cartProduct.getText().equalsIgnoreCase(item));
+		Assert.assertTrue(cartProd);
+		
+		driver.findElement(By.xpath("//button[contains(text(),'Checkout')]")).click();
+		
+		String paymentmode = driver.findElement(By.cssSelector(".payment__type.payment__type--cc.active")).getText();
+		System.out.println(paymentmode);
+		
+		
+		WebElement date = driver.findElement(By.xpath("//select[@class= 'input ddl'][1]"));
+		Select dt =  new Select(date);
+		dt.selectByVisibleText("05");
+		System.out.println("Selected Date" +dt.getFirstSelectedOption().getText());
+		
+		WebElement year = driver.findElement(By.xpath("//select[@class= 'input ddl'][2]"));
+		Select yr =  new Select(year);
+		yr.selectByVisibleText("27");
+		System.out.println("Selected Year" + yr.getFirstSelectedOption().getText());	 
+		
+		driver.findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys("123");
+		driver.findElement(By.xpath("(//input[@type='text'])[3]")).sendKeys("Pavithra");
+		//driver.findElement(By.xpath("(//input[name='coupon']")).sendKeys("mpavithra18@gmail.com");
+		
+				
+		Actions ac = new Actions(driver);
+		ac.sendKeys(driver.findElement(By.cssSelector("[placeholder = 'Select Country']")), "India").build().perform();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ta-results")));
+		driver.findElement(By.cssSelector(".ta-item:nth-of-type(2)")).click();
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,100)");
+		driver.findElement(By.xpath("//a[contains(text(),'Place Order')]")).click();
+		String confirmMsg = driver.findElement(By.cssSelector(".hero-primary")).getText();
+		Assert.assertTrue(confirmMsg.equalsIgnoreCase("THANKYOU FOR THE ORDER."));  
+		
+		driver.close();
+		
+		*/
+	}
+	}
+
+

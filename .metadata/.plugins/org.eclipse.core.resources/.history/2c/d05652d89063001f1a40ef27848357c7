@@ -1,0 +1,29 @@
+package leetCode;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+public class ReverseWords {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String s = " the sky is blue ";
+		String RevStr = reverseWords(s);
+		System.out.println("Input String : " + s +"\t" + "Reversed String: " + RevStr);
+
+	}
+
+	private static String reverseWords(String s) {
+		// Trim leading and trailing spaces
+		s.trim();
+		String[] words = s.split("\\s+");
+		List<String> list = Arrays.asList(words);
+		Collections.reverse(list);
+		return s;
+	}
+
+}

@@ -1,0 +1,28 @@
+package leetCode;
+
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class LongestSubstring {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Find the length of the longest substring without repeating characters: ");
+		String str = sc.next();
+		lengthOfLongestSubstring(str);
+	}
+
+	private static void lengthOfLongestSubstring(String s) {
+		// TODO Auto-generated method stub
+	    HashSet set = new HashSet<>();
+		int maxLength = 0; int left = 0;
+		
+		for (int right = 0; right<s.length();right++)
+		{
+			curChar = s.charAt(right);
+		}
+		
+	}
+
+}

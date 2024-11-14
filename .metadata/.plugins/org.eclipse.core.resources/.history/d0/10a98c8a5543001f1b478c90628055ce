@@ -1,0 +1,23 @@
+package SelfLearning.StepDefinitions;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+
+import SelfLearning.TestComponents.BaseTest;
+
+public class Testobjectread extends BaseTest {
+
+	public static void main(String[] args) throws IOException {
+	// TODO Auto-generated method stub
+		
+		
+		BaseTest bs=new BaseTest();
+		
+		List<HashMap<String, String>> value=bs.getJsonDataToMap("pavithra");
+		  
+		System.out.println(value.get(0).get("email"));
+
+	}
+
+}

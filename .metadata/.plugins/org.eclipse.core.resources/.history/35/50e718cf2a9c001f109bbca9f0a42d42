@@ -1,0 +1,37 @@
+package practiceCode;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+
+public class FindLargestElement {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {25, 11, 77, 75, 56,5,27};
+		usingLoopMethod(arr);
+		usingListMethod(arr);
+		
+	}
+
+	private static void usingListMethod(int[] arr) {
+		Arrays.sort(arr);
+		 LinkedList ll = new LinkedList<>();
+		ll.add(arr);
+		System.out.println("Largest Element: " + ll.getLast());
+	}
+
+	private static void usingLoopMethod(int[] arr) {
+		// TODO Auto-generated method stub
+	int max = arr[0];
+			for (int i =0 ;i<arr.length; i++)
+			{
+				if (arr[i]>max)
+					{
+						max = arr[i];
+					}
+			}
+			System.out.println("Largest Element: " +max);
+	}
+
+}

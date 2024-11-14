@@ -1,0 +1,29 @@
+package leetCode;
+
+import java.util.Scanner;
+
+public class ValidParentheses {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the parentheses type that you want to verify: ");
+		String input = sc.next();
+		ValidParentheses vp= new ValidParentheses();
+		vp.isVaildParentheses(input);
+		
+	}
+
+	private void isVaildParentheses(String input) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static boolean isMatching(char open , char close)
+	{
+		return ( open == '(' && close == ')'  ||
+				 open == '{' && close == '}'  ||
+				 open == '[' && close == ']'  
+				); 
+	}
+}

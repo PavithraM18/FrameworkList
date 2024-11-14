@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestRunner" project="APIFramework" tests="1" started="1" failures="1" errors="0" ignored="0">
+  <testsuite name="cucumber.Options.TestRunner" time="6.561">
+    <testsuite name="Validating Place API's" time="6.561">
+      <testcase name="Verify if Place is being sucessfully added using AddPlaceAPI" classname="Validating Place API's" time="6.561">
+        <failure>
+          <expected>APP</expected>
+          <actual>app</actual>
+          org.junit.ComparisonFailure: expected:&lt;[APP]&gt; but was:&lt;[app]&gt;&#13;
+	at org.junit.Assert.assertEquals(Assert.java:115)&#13;
+	at org.junit.Assert.assertEquals(Assert.java:144)&#13;
+	at stepDefinitions.StepDefinition.in_response_body_is(StepDefinition.java:66)&#13;
+	at ✽."scope" in response body is "app"(file:///C:/Users/pavithra.mathivanan/OneDrive%20-%20InnovaSolutions/eclipse-workspace/APIFramework/src/test/java/features/placeValidation.feature:27)&#13;
+&#13;
+
+        </failure>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testrun>

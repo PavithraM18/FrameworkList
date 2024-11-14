@@ -1,0 +1,57 @@
+package Coding;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Week1 {
+
+	static WebDriver driver = new FirefoxDriver();
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		driver.manage().window().maximize();
+		program1();	
+		program2();
+	}
+	
+	public static void program1()
+	{
+		/* driver.get("https://the-internet.herokuapp.com/basic_auth");
+		driver.switchTo().alert().sendKeys("admin" + Keys.TAB + "admin");
+		driver.switchTo().alert().accept(); */
+		
+		String username = "admin";
+		String password = "admin";
+		String baseUrl = "https://";
+		driver.get(baseUrl+ username + ":" + password + "@" + "the-internet.herokuapp.com/basic_auth");
+		String msg = driver.findElement(By.xpath("//div[@class = 'example'] //p")).getText();
+		System.out.println(msg);
+		
+	}
+	
+	public static void program2()
+	{
+		
+		String[] url = {"https://www.lambdatest.com/blog/selenium-best-practices-for-web-testing/",
+				" https://www.ministryoftesting.com/articles/websites-to-practice-testing",
+				"https://naveenautomationlabs.com/opencart/",
+				" https://demo.guru99.com/"};
+		for (int i = 0 ; i<url.length; i++)
+		{
+			driver.get(url[i]);
+			System.out.println( driver.getCurrentUrl());
+			System.out.println(driver.getTitle());
+			List<WebElement> links = driver. findElements(By.tagName("a"));
+			int count = links.size();
+			System.out.println("count: "+count);
+		}
+	}
+
+}

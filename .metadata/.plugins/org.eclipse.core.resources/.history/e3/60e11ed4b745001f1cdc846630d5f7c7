@@ -1,0 +1,72 @@
+package cucumber.stepDefinitions;
+
+import static io.restassured.RestAssured.given;
+
+import cucumber.resources.ApiResources;
+import cucumber.resources.TestDataBuild;
+import cucumber.resources.Utils;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
+
+public class StepDefinition extends Utils{
+	RequestSpecification res;
+	ResponseSpecification responspec;
+	Response response ;
+	String responseString;
+	TestDataBuild data =  new TestDataBuild();
+	
+
+@Given("Add Place Payload with {string} {string} {string}")
+public void add_place_payload_with(String name, String lanugage, String address) throws IOException {
+
+	//responspec = new ResponseSpecBuilder().expectContentType(ContentType.JSON).expectStatusCode(200).build();
+	res = given().spec(requestSpecification()).body(data.addPlacePayload(name,lanugage,address));
+}
+
+@When("user calls {string} with {string} http request")
+public void user_calls_with_http_request(String resource, String httpMethod) {
+	// constructor will be caled with value of resource which you pass
+		ApiResources resourceAPI = ApiResources.valueOf(resource);
+		System.out.println(resourceAPI.getResource());		
+	    responspec = new ResponseSpecBuilder().expectContentType(ContentType.JSON).expectStatusCode(200).build();
+	    if(httpMethod.equalsIgnoreCase("POST"))
+	    {
+		response = res.when().post(resourceAPI.getResource());
+	    }
+	    else if (httpMethod.equalsIgnoreCase("GET"))
+	    { 
+	    	response = res.when().get(resourceAPI.getResource());
+	    }
+	    
+	   /*  .then().spec(responspec).extract().response();  */
+}
+
+@Then("the API call is success with status code {int}")
+public void the_api_call_is_success_with_status_code(Integer int1) {
+	assertEquals(response.getStatusCode(), 200);
+}
+@Then("{string} in response body is {string}")
+public void in_response_body_is(String keyValue, String exceptedValue) {
+	
+	 String actucalValue = getJsonPath(response, keyValue);
+	assertEquals(actucalValue,exceptedValue);
+}
+
+@Then("Verify place_id created maps to {string} using {string}")
+public void verify_place_id_created_maps_to_using(String string, String string2) throws IOException {
+	String placeId = getJsonPath(response, "place_id");
+	res = given().spec(requestSpecification()).queryParam("place_id", placeId);
+}
+
+
+}

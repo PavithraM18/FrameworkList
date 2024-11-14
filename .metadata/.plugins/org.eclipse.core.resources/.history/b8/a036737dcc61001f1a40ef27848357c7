@@ -1,0 +1,49 @@
+package leetCode;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class ValidParentheses {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the parentheses type that you want to verify: ");
+		String input = sc.next();
+		ValidParentheses vp = new ValidParentheses();
+		System.out.println("Output Value: " + vp.isVaildParentheses(input));
+		sc.close();
+	}
+
+	// Method to check if the given string has valid parentheses
+	private  boolean isVaildParentheses(String input) {
+		Stack<Character> s = new Stack<>();
+		
+		for(char c : input.toCharArray())
+		{
+			if(c == '(' || c == '[' || c == '{')
+			{
+				s.push(c);
+			}
+			else if (c == ')' || c == ']' || c == '}')
+			{
+				if (s.isEmpty() || isMatching(s.peek(), c) )
+				{
+					return false;
+				}
+			}
+			s.pop();
+		}
+		
+		return s.isEmpty();
+		
+	}
+
+	// Helper method to check if the opening and closing brackets match
+	private static boolean isMatching(char open , char close)
+	{
+		return ( open == '(' && close == ')'  ||
+				 open == '{' && close == '}'  ||
+				 open == '[' && close == ']'  ); 
+	}
+}

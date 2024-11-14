@@ -1,0 +1,37 @@
+package Coding;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Week1 {
+
+	static WebDriver driver = new FirefoxDriver();
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		driver.manage().window().maximize();
+		//driver.get("https://the-internet.herokuapp.com/basic_auth");
+		//Alert a = driver.switchTo().alert();
+		//a.sendKeys("admin");
+		program1();
+		
+		
+	}
+	
+	public static void program1()
+	{
+		String username = "admin";
+		String password = "admin";
+		String baseUrl = "http://";
+
+		driver.get(baseUrl + username + ":" + password + "@" + "the-internet.herokuapp.com/basic_auth");
+		String msg = driver.findElement(By.xpath("//div[@class = 'example'] //p")).getText();
+		System.out.println(msg);
+	}
+
+}

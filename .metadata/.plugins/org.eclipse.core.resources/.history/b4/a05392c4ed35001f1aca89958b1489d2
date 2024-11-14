@@ -1,0 +1,10 @@
+package seleniumframework.ExtentReports;
+
+public class ExtentReportDemo {
+
+	@Test
+	public void initialDemo() {
+	
+	}
+
+}

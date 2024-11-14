@@ -1,0 +1,37 @@
+package dataDriven.excelDataProvider;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class dataProvider {
+
+	//multiple sets of data to our tests
+	//array
+	//5sets of data as 5 array from data provider to your tests
+	// then your test run will run 5 times with separate sets of data (arrays)
+	
+	@Test(dataProvider = "driveTest")
+	public void testCaseData(String s1,String s2,String id)
+	{
+		System.out.println(s1+ s2 + id);
+	}
+	
+	@DataProvider(name = "driveTest")
+	public void getData() throws IOException
+	{
+		//Object[][] data =  {{"helo","text","1"},{"bye","msg","23"},{"see","you","57"}};
+		// every row of excel should be sent to 1 array
+		FileInputStream fis = new FileInputStream("C:\\Users\\pavithra.mathivanan\\OneDrive - InnovaSolutions\\eclipse-workspace\\SampleFiles\\excelDriven.xlsx");
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet sheet = wb.getSheetAt(0);
+		
+		
+		//return data;
+	}
+	
+}

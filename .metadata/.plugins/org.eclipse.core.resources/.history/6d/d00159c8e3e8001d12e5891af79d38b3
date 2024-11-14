@@ -1,0 +1,21 @@
+package CoreJavaBrushup1;
+
+public class NestedLoop {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int k = 1;
+		for (int i=0;i<=5;i++)
+		{
+			System.out.println ("Outer loop:" + i);
+			for (int j=1; j<=4-i; j++)
+			{
+				System.out.println (k);
+				k++;
+			}
+		}
+		
+		
+	}
+}

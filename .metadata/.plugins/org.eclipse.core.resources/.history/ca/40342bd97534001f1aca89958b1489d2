@@ -1,0 +1,20 @@
+package SelfLearning.data;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+
+public class DataReader {
+
+	public void getJsonDataToMap()
+	{
+		try {
+			//read Json to string
+			FileUtils.readFileToString(new File(System.getProperty("User.dir")+"//src//test//java//SelfLearning//data//PurchaseOrder.json"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,26 @@
+package Coding;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Week1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+	//	driver.get("https://the-internet.herokuapp.com/basic_auth");
+		//Alert a = driver.switchTo().alert();
+		//a.sendKeys("admin");
+		
+		String username = "admin";
+		String password = "admin";
+		String baseUrl = "http://";
+
+		driver.get(baseUrl + username + ":" + password + "@" + "the-internet.herokuapp.com/basic_auth");
+		
+	}
+
+}

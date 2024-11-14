@@ -1,0 +1,68 @@
+package SelfLearning.tests;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import SelfLearning.TestComponents.BaseTest;
+import SelfLearning.pageobjects.CartPage;
+import SelfLearning.pageobjects.CheckOutPage;
+import SelfLearning.pageobjects.ConfirmationPage;
+import SelfLearning.pageobjects.LandingPage;
+import SelfLearning.pageobjects.OrderPage;
+import SelfLearning.pageobjects.ProductCatalogue;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SubmitOrderTest extends BaseTest{
+	String productName = "ZARA COAT 3";
+	
+	@Test(dataProvider = "getData" , groups = "purchase")
+	public void submitOrder(String email,String password , String productName) throws IOException
+	{
+		
+		ProductCatalogue productcatal  = lp.loginApplication(email, password);		
+		List<WebElement> productLists = productcatal.getProductList();
+		productcatal.addProductToCart(productName);
+		CartPage cartpag  = productcatal.goToCartPage();			
+		boolean cartProd = cartpag.verifyTheProductDisplay(productName);
+		Assert.assertTrue(cartProd);
+		CheckOutPage CheckOutPag = cartpag.goToCheckOut();
+		String paymentmode  = CheckOutPag.getPaymentMode();
+		System.out.println(paymentmode);
+		CheckOutPag.enterCardDetails("123", "Pavithra");
+		CheckOutPag.selectCountry("India");		
+		ConfirmationPage ConfirmationPag = CheckOutPag.submitOrder();
+		String confirmMsg = ConfirmationPag.getConfrimationmsg();
+		Assert.assertTrue(confirmMsg.equalsIgnoreCase("THANKYOU FOR THE ORDER."));  
+				
+	}
+	
+	@Test(dependsOnMethods = {"submitOrder"})
+	public void orderHistoryTest()
+	{
+		ProductCatalogue productcatal  = lp.loginApplication("mpavithra18@gmail.com", "Test@1234");		
+		OrderPage orderPag  = productcatal.goToOrderPage();
+		orderPag.verifyOrderDisplay(productName);
+	}
+	
+	@DataProvider
+	public Object[][] getData() {
+		return new Object[][] { {"mpavithra18@gmail.com", "Test@1234","ZARA COAT 3"} ,  {"mpavithra18@gmail.com", "Test@1234","ADIDAS ORIGINAL"}};
+		//,
+	}
+}
+
+

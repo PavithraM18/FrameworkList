@@ -1,0 +1,43 @@
+package Coding;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Week4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		program1();
+	}
+	
+	public static void program1()
+	{
+		WebDriver driver =new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("https://testpages.eviltester.com/styled/challenges/growing-clickable.html");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".styled-click-button.showgrow.grown")));
+		System.out.println( button.getLocation());
+		System.out.println( button.getText());
+		System.out.println( button.isEnabled());
+		button.click();
+		
+	/* 	JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement button = driver.findElement(By.id("growbutton"));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.visibilityOf(button));
+		js.executeScript("arguments[0].click();", button); */
+	}
+
+}

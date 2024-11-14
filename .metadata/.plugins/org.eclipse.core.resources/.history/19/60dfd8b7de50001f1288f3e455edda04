@@ -1,0 +1,24 @@
+package dataDriven.excelDataProvider;
+
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class dataProvider {
+
+	//multiple sets of data to our tests
+	//array
+	//5sets of data as 5 array from data provider to your tests
+	// then your test run will run 5 times with separate sets of data (arrays)
+	@Test
+	public void testCaseData()
+	{
+		
+	}
+	@DataProvider(name = "driverTest")
+	public Object[][] getData()
+	{
+		Object[][] data =  {{"helo","text",1},{"bye","msg",23},{"see","you",57}};
+		return data;
+	}
+	
+}

@@ -1,0 +1,18 @@
+package CoreJavaBrushup1;
+
+public class StringObj {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String w = new String("Welcome home");
+		System.out.println(w);
+		String x = "Greeting Every One";
+		String [] z= x.split(" ");
+		System.out.println(z[1]);
+		
+				
+
+	}
+
+}

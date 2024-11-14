@@ -1,0 +1,33 @@
+package Programs;
+
+import java.util.Scanner;
+
+public class StringPalindrome {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the String:");
+		String enteredName = sc.nextLine();
+		System.out.println("Enter string:" + enteredName);
+		String rvr = "";
+		for(int i = 0;i<enteredName.length();i++)
+		{
+			rvr = enteredName.charAt(i) + rvr;
+			
+		}
+		String exceptedName = rvr;
+		System.out.println("Reversed string:" + exceptedName);
+		if (enteredName.equalsIgnoreCase(exceptedName))
+		{
+			System.out.println("Entered string is palindrome: " + exceptedName);
+		}
+		else
+		{
+			System.out.println("Entered string is not palindrome: " + exceptedName);
+		}
+			
+	}
+
+}

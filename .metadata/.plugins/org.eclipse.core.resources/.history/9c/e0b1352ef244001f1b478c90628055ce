@@ -1,0 +1,27 @@
+package cucumber.resources;
+
+public class demo {
+
+	String addPlaceApi = "/maps/api/place/add/json";
+	String getPlaceApi = "/maps/api/place/get/json";
+	String deletePlaceApi = "/maps/api/place/delete/json";
+	
+	public String getAddPlaceApi() {
+		return addPlaceApi;
+	}
+	public void setAddPlaceApi(String addPlaceApi) {
+		this.addPlaceApi = addPlaceApi;
+	}
+	public String getGetPlaceApi() {
+		return getPlaceApi;
+	}
+	public void setGetPlaceApi(String getPlaceApi) {
+		this.getPlaceApi = getPlaceApi;
+	}
+	public String getDeletePlaceApi() {
+		return deletePlaceApi;
+	}
+	public void setDeletePlaceApi(String deletePlaceApi) {
+		this.deletePlaceApi = deletePlaceApi;
+	}
+}

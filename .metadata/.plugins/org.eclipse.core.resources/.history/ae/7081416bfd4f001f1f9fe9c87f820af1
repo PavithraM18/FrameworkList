@@ -1,0 +1,75 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class DataDriven {
+
+	//Identify the columns by scanning the entire 1st row
+	//once column is identified then scan entire testcases column to identify purchase testcase row
+	//after you grab purchase testcase row ,pull all the data of that row and feed into test
+	
+	public static void main(String[] args) throws IOException {
+		// file input stream 
+
+		
+	}
+
+	public ArrayList<String> getData(String testCaseName) throws IOException
+	{
+
+		ArrayList<String> a = new ArrayList<String>();
+		FileInputStream fis = new FileInputStream("C:\\Users\\pavithra.mathivanan\\OneDrive - InnovaSolutions\\eclipse-workspace\\SampleFiles\\ExcelDriveSample.xlsx");
+		XSSFWorkbook workBook = new XSSFWorkbook(fis);
+		int sheets = workBook.getNumberOfSheets();
+		for(int i = 0; i<sheets ; i++)
+		{
+			if(workBook.getSheetName(i).equalsIgnoreCase("testdata"))
+			{
+			XSSFSheet sheet = workBook.getSheetAt(i);
+			//Identify the columns by scanning the entire 1st row
+			Iterator<Row> rows = sheet.rowIterator(); //sheet is the collection of rows
+			Row firstRow = rows.next(); 
+			Iterator<Cell> cellls = firstRow.cellIterator();  // row is the collection of cells
+			int k = 0; 
+			int coloumn = 0;
+			while (cellls.hasNext())
+			{
+				Cell value = cellls.next();
+				if (value.getStringCellValue().equalsIgnoreCase("Testcases"))
+				{
+					//desired column
+					coloumn = k;
+				}
+				k++;
+			}
+			System.out.println(coloumn);
+			//once column is identified then scan entire testcases column to identify purchase testcase row
+			while(rows.hasNext())
+			{
+				Row r = rows.next();
+				if (r.getCell(coloumn).getStringCellValue().equalsIgnoreCase(testCaseName))
+				{
+					//after you grab purchase testcase row ,pull all the data of that row and feed into test
+					Iterator<Cell> cv = r.cellIterator();
+					while (cv.hasNext())
+					{
+						a.add(cv.next().getStringCellValue());
+						
+					}
+				} 
+				return a;
+			}
+		}
+	}
+		return a;
+}
+}
+
+

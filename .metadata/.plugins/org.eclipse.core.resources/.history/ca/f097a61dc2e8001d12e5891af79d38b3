@@ -1,0 +1,26 @@
+package CoreJavaBrushup1;
+
+public class StringObj {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String w = new String("Welcome home");
+		String X = "";
+		System.out.println(w);
+		String x = "Greeting Every One";
+		String [] z= x.split("r");
+		System.out.println(z[1]);
+		System.out.println(z[2].trim());
+		for (int i= x.length()-1; i>=0;i--)
+		{
+			System.out.println(x.charAt(i));
+			char w1 = x.charAt(i);
+			 X= X+w1;
+			 System.out.println("Reverse word: " + X);
+			}
+				
+		
+	}
+
+}

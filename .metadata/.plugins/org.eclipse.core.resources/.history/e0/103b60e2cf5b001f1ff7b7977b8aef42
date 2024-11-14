@@ -1,0 +1,17 @@
+package drivePractise;
+
+public class FirstandLastOccuranceIndex {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {1, 2, 2, 2, 2, 1, 4, 7 ,8 ,8 }; 
+        int target = 1; 
+        findFirstAndLast(arr, target); 
+	}
+
+	private static void findFirstAndLast(int[] arr, int target) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

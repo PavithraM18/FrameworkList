@@ -1,0 +1,34 @@
+package Basics;
+
+
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
+import static io.restassured.RestAssured.*;
+
+import PojoClassfile.LoginRequest;
+import PojoClassfile.LoginResponse;
+
+public class ECommerceApiTest {
+
+	public static void main(String[] args)
+	{
+		// Login into Ecom site
+		RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").
+		setContentType(ContentType.JSON).build();
+		LoginRequest loginreq = new LoginRequest();
+		loginreq.setUserEmail("postmanrestassured@gmail.com");
+		loginreq.setUserPassword("Test@1234");
+		RequestSpecification reqLogin = given().log().all().spec(req).body(loginreq);
+		LoginResponse loginRespon = reqLogin.when().post("/api/ecom/auth/login").then().log().all()
+				.extract().as(LoginResponse.class);
+		String token = loginRespon.getToken();
+		String userId = loginRespon.getUserId();
+		System.out.println(token);
+		System.out.println(userId);
+		
+		// Create and add a product
+		RequestSpecification addProductBaseUrl = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").
+				addHeader("Authorization", token).build();
+	}
+}

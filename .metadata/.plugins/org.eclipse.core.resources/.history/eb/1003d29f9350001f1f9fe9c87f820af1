@@ -1,0 +1,30 @@
+package Coding;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Week5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		program1();
+	}
+	
+	public static void program1()
+	{
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://qaplayground.dev/apps/verify-account/");
+		 List<WebElement> list = driver.findElements(By.xpath("//input[@class= 'code']"));
+		for (int i = 1; i <= list.size(); i++) 
+		{
+		       String xpath = "(//input[@placeholder='0'])[" + i + "]";
+		       WebElement element = driver.findElement(By.xpath(xpath));
+		       element.sendKeys("9");
+	   }
+	}
+
+}

@@ -1,0 +1,19 @@
+package Basics;
+
+import io.restassured.RestAssured;
+import static io.restassured.RestAssured.*;
+
+public class AddPlaceApi {
+
+	public static void main(String[] args) {
+		// validate if add place API is working as excepted
+		// 3 principles
+		//given - all input details
+		//when - submit the API - resource ,http methods
+		//then - validate the response 
+		//content of the file json to string ->convert into byte then byte into string
+		
+		RestAssured.baseURI = "https://rahulshettyacademy.com";
+	}
+
+}

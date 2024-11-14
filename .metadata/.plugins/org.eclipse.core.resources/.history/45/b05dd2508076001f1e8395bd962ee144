@@ -1,0 +1,40 @@
+package Programs;
+
+public class RemoveSpaces {
+
+	public static void main(String[] args) {
+		
+		String str = "     Geeks     for Geeks     ";
+		usingStringClass(str);
+		usingCharacterClass(str);
+		removeLeadingAndTrailingSpaces(str);
+	}
+
+	private static void removeLeadingAndTrailingSpaces(String str) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private static void usingCharacterClass(String str) {
+		String  op = "";
+		for (int i = 0 ; i<str.length();i++)
+		{
+			char ch = str.charAt(i);
+			  // Checking whether is white space or not
+			if(!Character.isWhitespace(ch))
+			{
+				op = op + ch;
+			}
+		}
+		System.out.println(op);
+	}
+
+	private static void usingStringClass(String str) {
+		
+		//where \\s is a single space in unicode
+		str = str.replaceAll("\\s", "");
+		System.out.println(str);
+	}
+
+}

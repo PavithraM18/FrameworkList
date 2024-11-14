@@ -1,0 +1,49 @@
+package Coding;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Week2 {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//program1();
+		program2();
+	}
+
+	public static void program1()
+	{
+		 WebDriver driver = new FirefoxDriver();
+		 driver.manage().window().maximize();
+		 driver.navigate().to("https://seleniumpractise.blogspot.com/2016/09/how-to-work-with-disable-textbox-or.html");
+		 driver.findElement(By.id("fname")).sendKeys("Pavithra");
+		System.out.println(driver.findElement(By.xpath("//input[@id='pass']")).isEnabled());
+		WebElement element = driver.findElement(By.xpath("//input[@id='pass']"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].removeAttribute('disabled','disabled')",element); 
+		element.sendKeys("Test");
+		driver.findElement(By.cssSelector("input[value= 'Submit']")).click();
+		driver.close();
+	}
+	
+	public static void program2()
+	{
+		WebDriver driver = new FirefoxDriver();
+		driver.navigate().to("https://qaplayground.dev/apps/tags-input-box/");
+		int tags = driver.findElements(By.xpath("//ul//li")).size();
+		System.out.println("Existing tags present in the box: " + tags);
+		List<WebElement> tagElement = driver.findElements(By.cssSelector("i.uit.uit-multiply"));
+		for (int i = 0;i<=tagElement.size();i++)
+		{
+			tagElement.remove(i);
+		}
+		
+	}
+}

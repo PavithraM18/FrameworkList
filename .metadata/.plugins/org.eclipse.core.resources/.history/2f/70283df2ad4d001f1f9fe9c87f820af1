@@ -1,0 +1,75 @@
+package Coding;
+
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+
+import static io.restassured.RestAssured.*;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+
+public class Week4 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		//program1();
+		program2();
+	}
+	
+	public static void program1()
+	{
+		String actualMsg = "Event Triggered";
+		WebDriver driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://testpages.eviltester.com/styled/challenges/growing-clickable.html");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".grown")));
+		System.out.println( button.getText());
+		System.out.println( button.isEnabled());
+		button.click();
+		String exceptedMsg = driver.findElement(By.id("growbuttonstatus")).getText();
+		System.out.println(exceptedMsg);
+		Assert.assertEquals(actualMsg, exceptedMsg);
+		driver.quit();
+	}
+	
+	public static void program2() throws InterruptedException
+	{
+		//RestAssured.baseURI = "https://randomuser.me";
+		WebDriver driver = new ChromeDriver();
+		String response = given().log().all().when().get("https://randomuser.me/api/").then().extract().asString();
+		System.out.println(response);
+		JsonPath js = new JsonPath(response); // for parsing Json
+		String fname = js.getString("results.name.first");
+		String lname = js.getString("results.name.last");
+		String firstName = fname.substring(1,fname.length()-1);
+		System.out.println(firstName);
+		String lastName = lname.substring(1,lname.length()-1);
+		System.out.println(lastName);
+		driver.get("https://fs2.formsite.com/meherpavan/form2/index.html?1537702596407");
+		driver.findElement(By.id("RESULT_TextField-1")).sendKeys(firstName);
+		driver.findElement(By.id("RESULT_TextField-2")).sendKeys(lastName);
+		driver.findElement(By.cssSelector("#RESULT_TextField-3")).sendKeys("1234567890");
+		driver.findElement(By.cssSelector("#RESULT_TextField-4")).sendKeys("India");
+		driver.findElement(By.cssSelector("#RESULT_TextField-5")).sendKeys("Chennai");
+		driver.findElement(By.cssSelector("#RESULT_TextField-6")).sendKeys("sample.@gmail.com");
+		Thread.sleep(1000);
+		driver.findElement(By.id("RESULT_RadioButton-7_1")).click();
+		
+		
+	}
+
+}

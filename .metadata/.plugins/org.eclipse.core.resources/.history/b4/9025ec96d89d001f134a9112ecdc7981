@@ -1,0 +1,12 @@
+package practiceCode;
+
+public class RemoveWhiteSpaceFromString {
+
+	public static void main(String[] args) {
+		
+		String text = "		Hello   World \n This 	is \t Java!		";
+		text.strip();
+		System.out.println(text.strip());
+	}
+
+}

@@ -1,0 +1,26 @@
+package SelfLearning.tests;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import SelfLearning.TestComponents.BaseTest;
+import SelfLearning.pageobjects.LandingPage;
+import SelfLearning.pageobjects.ProductCatalogue;
+
+public class ErrorValidations extends BaseTest{
+
+	@Test
+	public void submitOrder() throws IOException
+	{
+		String productName = "ZARA COAT 3";
+		ProductCatalogue productcatal  = lp.loginApplication("mpavithra18@yahoo.com", "Test12098");		
+		Assert.assertEquals("Incorrect email or password", LandingPage.getErrorMessage);
+	
+	//	ng-tns-c4-6 ng-star-inserted ng-trigger ng-trigger-flyInOut ngx-toastr toast-error
+		
+	}
+}
+
+

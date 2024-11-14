@@ -1,0 +1,25 @@
+package Programs;
+
+public class VowelCount {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String s = "Count the number of vowels present in the string";
+		 s = s.toLowerCase();    
+		int count = 0;
+		for (int i =0 ; i<s.length();i++)
+		{
+			if (s.charAt(i) == 'a'||s.charAt(i) == 'a'||s.charAt(i) == 'a'||s.charAt(i) == 'a'||s.charAt(i) == 'a')
+			{
+				count++;
+			}
+			else 
+			{
+				System.out.println("There is no vowel present in the string");
+			}
+		System.out.println("Vowel count" + count);
+
+	}
+	}
+}

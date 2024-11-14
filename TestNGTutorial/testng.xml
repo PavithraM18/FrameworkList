@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Loan Department">
+	<listeners>
+		<listener class-name="TestNG.Listeners"></listener>
+	</listeners>
+	<test thread-count="5" name="Personal Loan"> 
+	  <parameter name="url" value="www.personalloan.com"></parameter>
+	    <classes>
+          <class name="TestNG.Day1">
+		  <methods>
+			  <include name="Demo"></include>
+		  </methods>
+	  </class>
+      <class name="TestNG.Day2"/>
+      <class name="TestNG.Day4"/>
+    </classes>
+  </test> 
+  
+   <test  name= "Car Loan">
+	   <parameter name="url" value="www.carloan.com"/>
+	   
+    <classes>
+      <class name="TestNG.Day3">
+      <methods>
+		  <exclude name="MoblieLoginCarLoan"></exclude> 
+		
+	  </methods>
+      </class>
+    </classes>
+  </test>
+    
+</suite> <!-- Suite -->
+<!--  <exclude name="API.*"></exclude>  to exclude all test starts with API name-->

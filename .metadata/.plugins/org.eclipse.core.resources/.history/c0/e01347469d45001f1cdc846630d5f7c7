@@ -1,0 +1,37 @@
+package Coding;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Week2Program2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		WebDriver driver = new FirefoxDriver();
+		driver.navigate().to("https://qaplayground.dev/apps/tags-input-box/");
+		int tags = driver.findElements(By.xpath("//ul//li")).size();
+		System.out.println("Existing tags present in the box: " + tags);
+		int tagElement = driver.findElements(By.cssSelector("i.uit.uit-multiply")).size();
+		for (int i = 0;i<tagElement;i++)
+		{
+			driver.findElement(By.xpath("//i[contains(@onclick,'remove')]")).click();
+		}
+		System.out.println(driver.findElement(By.xpath("//div[@class='details']//p")).getText());
+	
+		Actions a = new Actions(driver);
+	    String[] inputValue = {"java","selenium","css","html","python","sql","oracle","testng","cucumber","jenkins"};
+	
+		for (int i = 0; i<inputValue.length;i++)
+		{
+			String singleValue = inputValue[i];
+			a.moveToElement(driver.findElement(By.cssSelector("input[type= 'text']"))).click().sendKeys(singleValue).keyDown(Keys.ENTER).build().perform();
+	
+		}
+		
+	}
+
+}

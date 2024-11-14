@@ -1,0 +1,31 @@
+package CoreJavaBrushup1;
+
+public class AustraliaTraffic implements CentralTraffic{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		AustraliaTraffic a = new AustraliaTraffic();
+		a.Greengo();
+		a.redstop();
+		a.FlashingYellow();
+	}
+
+	public void Greengo() {
+		// TODO Auto-generated method stub
+		System.out.println("green go displays");
+	}
+
+	@Override
+	public void redstop() {
+		// TODO Auto-generated method stub
+		System.out.println("red stop displays");
+	}
+
+	@Override
+	public void FlashingYellow() {
+		// TODO Auto-generated method stub
+		System.out.println("flashing yellow displays");
+	}
+
+}

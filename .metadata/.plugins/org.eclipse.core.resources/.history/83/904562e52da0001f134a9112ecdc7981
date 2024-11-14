@@ -1,0 +1,17 @@
+package practiceCode;
+
+public class FindNumberOfWordsInString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String msg = "Beauty lies in the eyes of beholder!!";
+		usingSplitMethod(msg);
+
+	}
+
+	private static void usingSplitMethod(String msg) {
+		words = msg.split(" ");
+		
+	}
+
+}

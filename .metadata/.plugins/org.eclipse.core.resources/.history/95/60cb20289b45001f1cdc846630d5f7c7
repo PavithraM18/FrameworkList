@@ -1,0 +1,74 @@
+package Coding;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Week2 {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//program1();
+		program2();
+	}
+
+	public static void program1()
+	{
+		 WebDriver driver = new FirefoxDriver();
+		 driver.manage().window().maximize();
+		 driver.navigate().to("https://seleniumpractise.blogspot.com/2016/09/how-to-work-with-disable-textbox-or.html");
+		 driver.findElement(By.id("fname")).sendKeys("Pavithra");
+		System.out.println(driver.findElement(By.xpath("//input[@id='pass']")).isEnabled());
+		WebElement element = driver.findElement(By.xpath("//input[@id='pass']"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].removeAttribute('disabled','disabled')",element); 
+		element.sendKeys("Test");
+		driver.findElement(By.cssSelector("input[value= 'Submit']")).click();
+		driver.close();
+	}
+	
+	public static void program2()
+	{
+		WebDriver driver = new FirefoxDriver();
+		driver.navigate().to("https://qaplayground.dev/apps/tags-input-box/");
+		int tags = driver.findElements(By.xpath("//ul//li")).size();
+		System.out.println("Existing tags present in the box: " + tags);
+		int tagElement = driver.findElements(By.cssSelector("i.uit.uit-multiply")).size();
+		for (int i = 0;i<tagElement;i++)
+		{
+			driver.findElement(By.xpath("//i[contains(@onclick,'remove')]")).click();
+		}
+		System.out.println(driver.findElement(By.xpath("//div[@class='details']//p")));
+		inputValue iv = new entryValue();
+		//String[] inputValue = {"java","selenium","css","html","python","sql","oracle","testng","cucumber","jenkins"};
+	
+		for (int i = 0; i<input.length;i++)
+		{
+			String singleValue = inputValue[i];
+		driver.findElement(By.cssSelector("input[type= 'text']")).sendKeys(singleValue);
+		}
+	}
+	
+	public  ArrayList<String> entryValue()
+	{
+		ArrayList<String> a = new ArrayList<String>();
+		a.add("java");
+		a.add("selenium");
+		a.add("css");
+		a.add("html");
+		a.add("python");
+		a.add("sql");
+		a.add("oracle");
+		a.add("testng");
+		a.add("cucumber");
+		a.add("jenkins");
+		return a;
+	}
+}

@@ -1,0 +1,28 @@
+package Programs;
+
+public class RemoveSpaces {
+
+	public static void main(String[] args) {
+		
+		String str = "     Geeks     for Geeks     ";
+		usingStringClass(str);
+		usingCharacterClass(str);
+	}
+
+	private static void usingCharacterClass(String str) {
+		String  op = "";
+		for (int i = 0 ; i<str.length();i++)
+		{
+			 ch = str.charAt(i);
+		}
+		
+	}
+
+	private static void usingStringClass(String str) {
+		
+		//where \\s is a single space in unicode
+		str = str.replaceAll("\\s", "");
+		System.out.println(str);
+	}
+
+}

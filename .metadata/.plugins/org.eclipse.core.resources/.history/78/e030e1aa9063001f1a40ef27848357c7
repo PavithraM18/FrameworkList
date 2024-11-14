@@ -1,0 +1,19 @@
+package leetCode;
+
+public class ReverseWords {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String s = "the sky is blue";
+		String RevStr = reverseWords(s);
+		System.out.println("Input String :" + s +"\t" + "Reversed String: " + RevStr);
+
+	}
+
+	private static String reverseWords(String s) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

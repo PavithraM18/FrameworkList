@@ -1,0 +1,39 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class DataDriven {
+
+	//Identify the columns by scanning the entire 1st row
+	//once column is identified then scan entire testcases column to identify purchase testcase row
+	//after you grab purchase testcase row ,pull all the data of that row and feed into test
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+
+		FileInputStream fis = new FileInputStream("C:\\Users\\pavithra.mathivanan\\OneDrive - InnovaSolutions\\eclipse-workspace\\SampleFiles\\ExcelDriveSample.xlsx");
+		XSSFWorkbook workBook = new XSSFWorkbook(fis);
+		int sheets = workBook.getNumberOfSheets();
+		for(int i = 0; i<sheets ; i++)
+		{
+			if(workBook.getSheetName(i).equalsIgnoreCase("testdata"))
+			{
+			XSSFSheet sheet = workBook.getSheetAt(i);
+			//Identify the columns by scanning the entire 1st row
+			Iterator<Row> rows = sheet.rowIterator();
+			Row firstRow = rows.next();
+			Iterator<Cell> cellls = firstRow.cellIterator();
+			firstCell = cellls.next();
+			}
+		}
+		
+	}
+
+}
+
+

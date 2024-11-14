@@ -1,0 +1,27 @@
+package CoreJavaBrushup2;
+
+public class StaticVar {
+	
+	String name;
+	String address;
+	static String city= "Tamilnadu";
+	static int i=0;
+
+	public StaticVar(String name, String address)
+	{
+		this.name= name;
+		this.address = address;
+		i++;
+		System.out.println(i);
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		StaticVar obj = new StaticVar("ashwin", "velachery");
+		StaticVar obj1 = new StaticVar("pavi", "kpm");
+		
+	}
+
+}

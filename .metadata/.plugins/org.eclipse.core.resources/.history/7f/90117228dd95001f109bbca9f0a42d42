@@ -1,0 +1,27 @@
+package Programs;
+
+public class Sum {
+
+	 public static void main(String[] args) {
+//	        String[] s = {"1", "2", "3"};
+//
+//	        int sum = 0;
+//	        for (int i = 0; i < s.length; i++) {
+//	            sum += Integer.parseInt(s[i]);
+//	        }
+//
+//	        System.out.println(sum); // Output: 6
+//	    }
+		int[] j = {1,2,3};
+		int sum = 0;
+		for (int i = 0;i<=j.length;i++)
+		{
+			int x = j[i];
+			sum = sum + x;
+			i++;
+		}
+		System.out.println(sum);
+	}
+
+
+}

@@ -1,0 +1,68 @@
+package stepDefinitions;
+
+import static io.restassured.RestAssured.given;
+
+import java.util.ArrayList;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import static org.junit.Assert.*;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
+import pojoClasses.AddPlacePost;
+import pojoClasses.Location;
+
+public class StepDefinition {
+	RequestSpecification res;
+	ResponseSpecification responspec;
+	Response response ;
+	String responseString;
+
+@Given("Add Place Payload")
+public void add_place_payload() {
+
+	AddPlacePost a = new AddPlacePost();
+	a.setAccuracy(50);
+	a.setAddress("29, side layout, cohen 09");
+	a.setLanguage("French-IN");
+	Location l = new Location();
+	l.setLat(-38.383494);
+	l.setLng(33.427362);
+	a.setLocation(l);
+	a.setName("Backline house");
+	a.setPhone_number("(+91) 983 893 3937");
+	ArrayList<String> myList = new ArrayList<String>();
+	myList.add("shoe park");
+	myList.add("shop");
+	a.setTypes(myList);
+	a.setWebsite("http://google.com");
+	
+	RequestSpecification req = new RequestSpecBuilder().setBaseUri("https://rahulshettyacademy.com").addQueryParam("key", "qaclick123")
+	.setContentType(ContentType.JSON).build();
+	responspec = new ResponseSpecBuilder().expectContentType(ContentType.JSON).expectStatusCode(200).build();
+	res = given().spec(req).body(a);
+}
+
+@When("user calls {string} with Post http request")
+public void user_calls_with_post_http_request(String string) {
+	response = res.when().post("/maps/api/place/add/json").then().spec(responspec).extract().response();
+}
+
+@Then("the API call is success with status code {int}")
+public void the_api_call_is_success_with_status_code(Integer int1) {
+	assertEquals(response.getStatusCode(), 200);
+}
+@Then("{string} in response body is {string}")
+public void in_response_body_is(String keyValue, String exceptedValue) {
+	responseString = response.asString();
+	JsonPath js = new JsonPath(responseString);
+	 String actucalValue = js.get(keyValue).toString();
+	assertEquals(actucalValue,exceptedValue);
+}
+}

@@ -1,0 +1,50 @@
+package CoreJavaBrushup1;
+
+public class NestedLoop {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int k = 1;
+		for (int i=0;i<=4;i++)
+		{
+			//System.out.println ("Outer loop:" + i);
+			
+			for (int j=1; j<=4-i; j++)
+			{
+				System.out.print (k); // values will print in same line
+				System.out.print("\t"); // '\t' means tab space
+				k++;
+			}
+			System.out.println ("");
+		}
+			
+		int m = 3;	
+		for (int i=1;i<5;i++)
+		{
+				
+			for (int j=1; j<=i; j++) //need to correct
+			{
+				System.out.print (m);
+				System.out.print("\t");
+				m = m+3;
+			}
+			System.out.println ("");
+		} 
+		
+		// to print num , each time it will reset
+	/*	for (int i=1;i<5;i++)
+		{
+			//int m = 1;		
+			for (int j=1; j<=i; j++) //need to correct
+			{
+				System.out.print (j);
+				System.out.print("\t");
+				//m++;
+			}
+			System.out.println ("");
+		}   */
+
+}
+
+}

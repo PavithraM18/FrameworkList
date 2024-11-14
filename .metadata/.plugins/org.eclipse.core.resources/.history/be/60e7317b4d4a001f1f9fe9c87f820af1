@@ -1,0 +1,77 @@
+package Coding;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Week3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//program1();
+		Week3 wk = new Week3();
+		wk.program2();
+	}
+	
+	public static void program1()
+	{
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://play1.automationcamp.ir/advanced.html");
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		WebElement webElement = driver.findElement(By.cssSelector(".star-rating"));
+		String text = js.executeScript("return window.getComputedStyle(document.querySelector('.star-rating'),'::after').getPropertyValue('content')")
+		           .toString();
+		String text1 = js.executeScript("return window.getComputedStyle(document.querySelector('.star-rating'),'::after').getPropertyValue('background-color')")
+		           .toString();
+		System.out.println(text);
+		System.out.println(text1);
+		driver.quit();
+	}
+
+	public void program2()
+	{
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://intellipaat.com/blog/tutorial/selenium-tutorial/selenium-cheat-sheet/");
+		driver.findElement(By.xpath("//strong[text()='Download the printable PDF of Selenium cheat sheet']")).click();
+		Set<String> tabs = driver.getWindowHandles();
+		Iterator<String> it = tabs.iterator();
+		String parentWindow = it.next();
+		String childWindow = it.next();
+		driver.switchTo().window(childWindow);
+		downloadPath();
+	}
+	
+	public static void downloadPath()
+	{
+        String downloadPath = "C:\\Users\\pavithra.mathivanan\\Downloads\\PDF";
+
+        // Set up Chrome options
+        ChromeOptions options = new ChromeOptions();
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("download.default_directory", downloadPath);
+        prefs.put("plugins.always_open_pdf_externally", true);
+        options.setExperimentalOption("prefs", prefs);
+        WebDriver driver = new ChromeDriver(options);
+        driver.get("https://intellipaat.com/blog/wp-content/uploads/2022/10/Selenium-Cheat-Sheet-2022.pdf"); // Replace with the actual URL
+
+        // Find the PDF download link and click it
+        WebElement downloadLink = driver.findElement(By.id("maskedImage"));
+        Thread.sleep(2000);
+        downloadLink.click();
+
+       // document.querySelector("#viewer").shadowRoot.querySelector("#toolbar").shadowRoot.querySelector("#downloads").shadowRoot.querySelector("#download").shadowRoot.querySelector("#icon > cr-icon");
+        
+       
+	}
+}

@@ -1,0 +1,11 @@
+import java.io.IOException;
+
+public class TestSample {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		DataDriven d = new DataDriven();
+		data = d.getData("Add profile");
+	}
+
+}

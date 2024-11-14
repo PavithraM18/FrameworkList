@@ -1,0 +1,19 @@
+package leetCode;
+
+public class FindMinimumInRotatedArray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 int[] nums1 = {4, 5, 6, 7, 0, 1, 2};
+	     int[] nums2 = {5, 10, 12, 15, 27};
+	     System.out.println("Minimum element in array" + findMin(nums1));
+	     findMin(nums2);
+
+	}
+
+	private static void findMin(int[] nums) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

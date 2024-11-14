@@ -1,0 +1,16 @@
+package CoreJavaBrushup1;
+
+public class JavaBasics {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int num = 5;
+		char value = 'y';
+		String desc = "India got medal";
+		float dec= 23.45;
+		System.out.println(num + value + desc + dec + "printing out different datatypes variable");
+
+	}
+
+}

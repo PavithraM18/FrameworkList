@@ -1,0 +1,75 @@
+package Coding;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Week1 {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		program1();	
+		program2();
+	}
+	
+	public static void program1()
+	{
+		/* driver.get("https://the-internet.herokuapp.com/basic_auth");
+		driver.switchTo().alert().sendKeys("admin" + Keys.TAB + "admin");
+		driver.switchTo().alert().accept(); */
+		 WebDriver driver = new FirefoxDriver();
+		 driver.manage().window().maximize();
+		String username = "admin";
+		String password = "admin";
+		String baseUrl = "https://";
+		driver.get(baseUrl+ username + ":" + password + "@" + "the-internet.herokuapp.com/basic_auth");
+		String msg = driver.findElement(By.xpath("//div[@class = 'example'] //p")).getText();
+		System.out.println(msg);
+		driver.close();
+	}
+	
+	@SuppressWarnings("deprecation")
+	public static void program2()
+	{
+		 WebDriver driver = new ChromeDriver();
+		 driver.manage().window().maximize();
+		 driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+		String[] url = {"https://www.ministryoftesting.com/articles/websites-to-practice-testing",
+				"https://naveenautomationlabs.com/opencart/",
+				" https://demo.guru99.com/",
+				"https://www.lambdatest.com/blog/selenium-best-practices-for-web-testing/",};
+		String pageTitle = null;
+		int count;
+		int maxLinks = 0;
+		
+		for (int i = 0 ; i<url.length; i++)
+		{
+			driver.get(url[i]);		
+			List<WebElement> links = driver. findElements(By.tagName("a"));
+		    count = links.size();
+			System.out.println("count: "+count);
+			if (count > maxLinks) 
+			{
+                maxLinks = count;
+                driver.getCurrentUrl();
+                pageTitle = driver.getTitle();
+            }
+			driver.switchTo().newWindow(WindowType.TAB);
+		}
+	   
+		System.out.println ("Page with Maximun links: " + pageTitle +" \n Number of links: " + maxLinks );
+		driver.quit();
+	}
+
+}

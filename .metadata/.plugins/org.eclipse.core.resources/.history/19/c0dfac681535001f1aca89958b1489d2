@@ -1,0 +1,8 @@
+package PojoClassfile;
+
+public class WebAutomation {
+
+	private String courseTitle;
+	private String price;
+	
+}

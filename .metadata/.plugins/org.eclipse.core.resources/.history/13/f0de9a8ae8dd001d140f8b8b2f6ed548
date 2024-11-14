@@ -1,0 +1,27 @@
+package CoreJavaBrushup1;
+
+import java.lang.reflect.Array;
+
+public class JavaBasics {
+
+	public static void main(String[] args) {
+		// Data types
+		
+		int num = 5;
+		char value = 'y';
+		String desc = "India got medal";
+		double dec= 23.4;
+		System.out.println(num + value + desc + dec + "printing out different datatypes variable");
+		
+		//Array 
+		int[] a1 = new int[5];
+		a1[0] = 45;
+		a1[1] = 67;
+		a1[2] = 8;
+		a1[3] = 87;
+		a1[4] = 55;
+		System.out.println(a1[2]);
+		
+	}
+
+}

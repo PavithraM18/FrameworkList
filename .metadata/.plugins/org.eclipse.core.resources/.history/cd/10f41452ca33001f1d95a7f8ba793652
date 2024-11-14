@@ -1,0 +1,15 @@
+package SelfLearning.pageobjects;
+
+import org.openqa.selenium.WebDriver;
+
+public class OrderPage {
+
+	public OrderPage(WebDriver driver) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public OrderPage(WebDriver driver) {
+		// TODO Auto-generated constructor stub
+	}
+
+}

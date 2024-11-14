@@ -1,0 +1,42 @@
+package uploaddownload;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class test {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		FileInputStream fis = new FileInputStream("C:\\Users\\pavithra.mathivanan\\Downloads\\download.xlsx");
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet sheet = wb.getSheet("Sheet1");
+		Iterator<Row> rows = sheet.rowIterator();
+		int k = 1;
+		int rowIndex = 0;
+		while(rows.hasNext())
+		{
+			Row row = rows.next();
+			Iterator<Cell> cellls = row.cellIterator(); 
+			while(cellls.hasNext())
+			{
+				Cell value = cellls.next();
+				if (value.getCellType()== CellType.STRING && value.getStringCellValue().equalsIgnoreCase("Apple"))
+				{
+					rowIndex = k;
+				}
+				k++;
+			}
+		}
+		System.out.println("Row: "+rowIndex);
+		
+	}
+
+}

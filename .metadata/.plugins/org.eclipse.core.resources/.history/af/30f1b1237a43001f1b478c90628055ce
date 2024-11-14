@@ -1,0 +1,18 @@
+package Programs;
+
+public class VowelCount {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String s = "Count the number of vowels present in the string";
+		int count = 0;
+		if (s.equalsIgnoreCase("a")||s.equalsIgnoreCase("e")||s.equalsIgnoreCase("i")||s.equalsIgnoreCase("o")||s.equalsIgnoreCase("u"))
+		{
+			count++;
+		}
+		System.out.println(count);
+
+	}
+
+}

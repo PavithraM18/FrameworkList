@@ -1,0 +1,14 @@
+package Basics;
+
+import Files.PayLoad;
+import io.restassured.path.json.JsonPath;
+
+public class ComplexJsonparse {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		JsonPath js = new JsonPath(PayLoad.coursePrice())
+	}
+
+}

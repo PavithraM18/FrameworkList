@@ -1,0 +1,22 @@
+package CoreJavaBrushup2;
+
+public class StaticVar {
+	
+	String name;
+	String address;
+	static String city;
+	static int i=0;
+
+	public StaticVar(String name, String address)
+	{
+		this.name= name;
+		this.address = address;
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

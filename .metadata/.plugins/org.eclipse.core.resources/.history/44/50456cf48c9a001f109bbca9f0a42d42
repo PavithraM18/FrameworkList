@@ -1,0 +1,23 @@
+package practiceCode;
+
+public class ReverseArray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] a = {1,2,3,4,5,6,7,8,9,0};
+		System.out.println("Origial Array:");
+		for (int i = 0;i<a.length;i++)
+		{
+			System.out.println(a[i]+" ");
+		}
+		System.out.println("Array in ReverseOrder:");
+		int rev = 0 ;
+		for(int i = a.length-1; i >= 0  ; i--)
+		{
+			rev = a[i];
+			System.out.println(rev);
+		}
+		
+	}
+
+}

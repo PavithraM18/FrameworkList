@@ -1,0 +1,131 @@
+package Coding;
+
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+public class Week3 {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+	//program1();
+		Week3 wk = new Week3();
+		wk.program2();
+	}
+	
+	public static void program1()
+	{
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://play1.automationcamp.ir/advanced.html");
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		driver.findElement(By.cssSelector(".star-rating"));
+		String text = js.executeScript("return window.getComputedStyle(document.querySelector('.star-rating'),'::after').getPropertyValue('content')")
+		           .toString();
+		System.out.println(text);
+		String input = text.substring(1,text.length()-1);
+		System.out.println(input);
+		driver.findElement(By.id("txt_rating")).sendKeys(input);
+		driver.findElement(By.id("check_rating")).click();
+		String exceptedMsg = driver.findElement(By.id("validate_rating")).getText();
+		System.out.println(exceptedMsg);
+		String actualMsg = "Well done!";
+		Assert.assertEquals(actualMsg, exceptedMsg);
+		driver.quit();
+	}
+
+	public void program2() throws InterruptedException
+	{
+		 	String downloadPath = "C:\\Users\\pavithra.mathivanan\\Downloads\\PDF";
+	     
+	        // Set up Chrome options
+	        ChromeOptions options = new ChromeOptions();
+	        Map<String, Object> prefs = new HashMap<>();
+	        prefs.put("download.default_directory", downloadPath);
+	        prefs.put("profile.default_content_settings.popups", 0);
+	        prefs.put("plugins.always_open_pdf_externally", true);
+	        options.setExperimentalOption("prefs", prefs);
+	        WebDriver driver = new ChromeDriver(options);
+	        driver.manage().window().maximize();
+	        driver.get("https://intellipaat.com/blog/tutorial/selenium-tutorial/selenium-cheat-sheet/");
+			driver.findElement(By.xpath("//strong[text()='Download the printable PDF of Selenium cheat sheet']")).click();
+	      
+			  
+			// Verify if the downloaded file is a PDF
+			File downloadedFile = new File(downloadPath + "\\Selenium-Cheat-Sheet-2022.pdf"); 
+	            
+	        if (downloadedFile.exists()) {
+	            String fileName = downloadedFile.getName();
+	            System.out.println (fileName);
+	            if (fileName.endsWith(".pdf")) {
+	                System.out.println("PDF file downloaded successfully");
+	            } else {
+	                System.out.println("Downloaded file is not a PDF");
+	            }
+	            
+	        } else {
+	            System.out.println("File not found or download failed");
+	        }
+			
+          //  driver.quit();
+		 
+	}
+	
+	public static void downloadPath() throws InterruptedException
+	{
+        String downloadPath = "C:\\Users\\pavithra.mathivanan\\Downloads\\PDF";
+     
+        // Set up Chrome options
+        ChromeOptions options = new ChromeOptions();
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("download.default_directory", downloadPath);
+        prefs.put("profile.default_content_settings.popups", 0);
+        prefs.put("plugins.always_open_pdf_externally", true);
+        options.setExperimentalOption("prefs", prefs);
+        WebDriver driver = new ChromeDriver(options);
+       // return options;
+        driver.get("https://intellipaat.com/blog/tutorial/selenium-tutorial/selenium-cheat-sheet/");
+		driver.findElement(By.xpath("//strong[text()='Download the printable PDF of Selenium cheat sheet']")).click();
+        
+//        String jsPath = "document.querySelector(\"#viewer\").shadowRoot.querySelector(\"#toolbar\").shadowRoot.querySelector(\"#downloads\").shadowRoot.querySelector(\"#download\").shadowRoot.querySelector(\"#icon > cr-icon\")"; 
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        WebElement downloadLink = (WebElement) js.executeScript("return " + jsPath);
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//       WebElement shadowHost = wait.until(ExpectedConditions.elementToBeClickable(downloadLink));
+//       shadowHost.click();
+		
+		  
+		// Verify if the downloaded file is a PDF
+        File downloadedFile = new File(downloadPath + "\\Selenium-Cheat-Sheet-2022.pdf"); // Replace with expected file name
+        if (downloadedFile.exists() && downloadedFile.isFile()) {
+            String fileName = downloadedFile.getName();
+            System.out.println (fileName);
+            if (fileName.endsWith(".pdf")) {
+                System.out.println("PDF file downloaded successfully");
+            } else {
+                System.out.println("Downloaded file is not a PDF");
+            }
+            
+        } else {
+            System.out.println("File not found or download failed");
+        }
+       }
+	
+	
+	}

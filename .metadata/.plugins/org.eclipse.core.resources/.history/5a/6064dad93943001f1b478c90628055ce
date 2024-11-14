@@ -1,0 +1,53 @@
+package Programs;
+
+public class StringReverse {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		stringReverse();
+		stringReverseArray();
+	}
+
+	public static void stringReverse()
+	{
+		String data = "Automation Practise String";
+		String rvr ="";
+		for (int i = 0; i<data.length()-1 ; i++)
+		{
+			rvr = data.charAt(i) + rvr;
+			
+		}
+		System.out.println (rvr);
+	}
+	
+
+	public static void stringReverseArray()
+	{
+		String data = "Automation Practise String";
+		char[] data1 = data.toCharArray();
+
+		for (int i= data1.length ;i>=0 ; i--)
+		{
+			System.out.println (data1[i]);
+		}
+		
+	}
+	
+	public static void subStringReverse()
+	{
+		String data = "Automation Practise String";
+		String[] datas = data.split(" ");
+		String rvr ="";
+		char rvrData = "";
+		for (String i : datas)
+		{
+			for (int i = 0; j<datas[i].length(); j++)
+			{
+				
+				rvrData = data[i].charAt(j);
+				System.out.println (rvrData);
+			}
+		}
+	}
+}

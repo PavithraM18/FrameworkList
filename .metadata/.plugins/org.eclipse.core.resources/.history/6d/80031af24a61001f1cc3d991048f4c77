@@ -1,0 +1,13 @@
+package Basics;
+import static io.restassured.RestAssured.*;
+
+public class OAuthAuthurizationCode {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String response= given().queryParam("access_token", "").when().get("https://rahulshettyacademy.com/getCourse.php").asString();
+		System.out.println(response);
+
+	}
+
+}

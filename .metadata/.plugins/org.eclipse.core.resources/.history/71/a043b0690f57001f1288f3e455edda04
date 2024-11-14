@@ -1,0 +1,36 @@
+package leetCode;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
+
+public class SubarraySum {
+    public List<List<Integer>> 1    
+ 1. 
+github.com
+github.com
+ findContinuousSubarray(int[] nums, int target) {
+        List<List<Integer>> result = new ArrayList<>();
+        Map<Integer, Integer> map = new HashMap<>(); // Map to store cumulative sum and its index
+        int sum = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+
+            if (sum == target) {
+                result.add(Arrays.asList(nums, i));
+            }
+
+            if (map.containsKey(sum - target)) {
+                int start = map.get(sum - target) + 1;
+                result.add(Arrays.asList(nums, start, i));
+            }
+
+            map.put(sum, i);
+        }
+
+        return result;
+    }
+}

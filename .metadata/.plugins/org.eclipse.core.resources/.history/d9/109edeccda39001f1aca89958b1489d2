@@ -1,0 +1,5 @@
+package PojoClassfile;
+
+public class LoginRequest {
+
+}

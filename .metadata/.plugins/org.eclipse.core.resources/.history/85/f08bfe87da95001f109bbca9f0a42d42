@@ -1,0 +1,28 @@
+package Programs;
+
+public class Sum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] s = {"1","2","3"};
+		
+		String sum = "0" ;
+		for(int i = 0;i<s.length; i++)
+		{
+			sum = sum + s[i];
+			i++;
+		}
+		System.out.println(sum);
+	}
+		
+//		int[] j = {1,2,3};
+//		int sum = 0;
+//		for (int i = 0;i<=j.length;i++)
+//		{
+//			sum = sum + j[i];
+//			i++;
+//		}
+//		System.out.println(sum);
+//	}
+
+

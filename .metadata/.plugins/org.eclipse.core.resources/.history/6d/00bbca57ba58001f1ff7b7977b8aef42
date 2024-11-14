@@ -1,0 +1,14 @@
+package leetCode;
+
+import java.util.Scanner;
+
+public class LongestSubstring {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Find the length of the longest substring without repeating characters: ");
+		str = sc.next();
+	}
+
+}

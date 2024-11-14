@@ -1,0 +1,21 @@
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class DataDriven {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+
+		FileInputStream fis = new FileInputStream("C:\\Users\\pavithra.mathivanan\\OneDrive - InnovaSolutions\\eclipse-workspace\\SampleFiles\\ExcelDriveSample.xlsx");
+		XSSFWorkbook workBook = new XSSFWorkbook(fis);
+		Iterator<Sheet> sheetList = workBook.sheetIterator();
+		System.out.println(sheetList);
+	}
+
+}
+
+

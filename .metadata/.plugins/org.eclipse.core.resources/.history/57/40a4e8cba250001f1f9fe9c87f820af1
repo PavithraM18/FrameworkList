@@ -1,0 +1,58 @@
+package Coding;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+public class Week5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//program1();
+		program2();
+	}
+	
+	public static void program1()
+	{
+		String actualMessage = "Success";
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://qaplayground.dev/apps/verify-account/");
+		 List<WebElement> list = driver.findElements(By.xpath("//input[@class= 'code']"));
+		for (int i = 1; i <= list.size(); i++) 
+		{
+		       String xpath = "(//input[@placeholder='0'])[" + i + "]";
+		       WebElement element = driver.findElement(By.xpath(xpath));
+		       element.sendKeys("9");
+	   }
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".info.success")));
+		String exceptedMessage = driver.findElement(By.cssSelector(".info.success")).getText();
+		System.out.println(exceptedMessage);
+		Assert.assertEquals(actualMessage, exceptedMessage);
+		driver.quit();
+	}
+
+	public static void program2()
+	{
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://qaplayground.dev/apps/qr-code-generator/");
+		driver.findElement(By.xpath("//input[@placeholder = 'Enter text or URL']")).sendKeys("I am Test automation Engineer");
+		driver.findElement(By.xpath("//div[@class = 'form']/button")).click();
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(10));
+		w.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".qr-code")));
+		driver.findElement(By.cssSelector(".qr-code img")).getText();
+		driver.findElement(By.cssSelector(".qr-code img")).getAttribute("src");
+		System.out.println(driver.findElement(By.cssSelector(".qr-code img")).getAttribute("src"));
+		System.out.println(driver.findElement(By.cssSelector(".qr-code img")).getText());
+	}
+}
